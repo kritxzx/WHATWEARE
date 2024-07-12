@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHO</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            font-size: medium;
+            color: #fff;
+            background: url('https://images.unsplash.com/photo-1719749938286-fcc01bf5755b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #0b291d;
+            margin: 30px 0;
+        }
+
+        marquee {
+            color: #c4c4c4;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        #label-container {
+            margin-top: 20px;
+        }
+
+        #music-player {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        audio {
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .Dev {
+            font-size: 2.5em;
+            margin-top: 200px;
+        }
+
+        #team-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 100px;
+        }
+
+        .team-member {
+            width: 30%;
+            margin: 10px;
+            text-align: center;
+            margin-top: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: scale(1.1);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member h3 {
+            font-size: 1.5em;
+            color: #0b291d;
+            margin: 10px 0;
+        }
+
+        .team-member p {
+            font-size: 1em;
+            color: #c4c4c4;
+            margin: 10px 0;
+        }
+
+        .End {
+            font-size: 1.5em;
+            margin-top: 300px;
+        }
+
+        #webcam-frame {
+            width: 300px;
+            height: 300px;
+            border: 2px dashed #c4c4c4;
+            margin: 20px auto 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #webcam-container {
+            display: none;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        #button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            font-weight: bold;
+            font-size: 1em;
+            color: white;
+            background-color: #3c4e49;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #647e76;
+        }
+
+        button:active {
+            background-color: #364944;
+        }
+    </style>
+</head>
+
+<body>
+    <marquee behavior="" direction="">MADE BY KRIT THEERAKAEW 6/1 5</marquee>
+    <h1>WHO IS THIS ?</h1>
+
+    <div>WHO ARE YOU</div>
+
+    <div id="button-container">
+        <button id="Start-button" type="button" onclick="init()">Start</button>
+        <button id="change-background-button" type="button" onclick="changeBackground()">Change Background</button>
+        <button id="stop-button" type="button" onclick="stopWebcam()" style="display: none;">Stop Webcam</button>
+    </div>
+
+    <div id="webcam-frame">
+        <p>Webcam Placeholder</p>
+    </div>
+
+    <div id="webcam-container"></div>
+    <div id="label-container"></div>
+
+    <div id="music-player">
+        <audio id="audio" controls>
+            <source src="Mymusic.mp3" type="audio/mpeg">
+        </audio>
+        <h2>Music Here!!!</h2>
+    </div>
+    <div class="Dev">
+        <header>Develop By</header>
+    </div>
+
+    <div id="team-section">
+        <div class="team-member">
+            <img src="Krit.jpg" alt="Member 1">
+            <h3>Krit</h3>
+            <p>WEBDEV</p>
+        </div>
+        <div class="team-member">
+            <img src="Pittinan.jpg" alt="Member 2">
+            <h3>Pittinan</h3>
+            <p>MEMBER</p>
+        </div>
+        <div class="team-member">
+            <img src="Apiwong.jpg" alt="Member 3">
+            <h3>Apiwong</h3>
+            <p>MEMBER</p>
+        </div>
+        <div class="team-member">
+            <img src="Naphat.jpg" alt="Member 4">
+            <h3>Naphat</h3>
+            <p>MEMBER</p>
+        </div>
+        <div class="team-member">
+            <img src="Akarawat.jpg" alt="Member 5">
+            <h3>Akarawat</h3>
+            <p>MEMBER</p>
+        </div>
+    </div>
+    <div class="End">
+        <h5>See you</h5>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+        const URL = "https://teachablemachine.withgoogle.com/models/zjPzqU7lrM/";
+
+        let model, webcam, labelContainer, maxPredictions;
+
+        async function init() {
+            console.log("Initializing...");
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+
+            try {
+                model = await tmImage.load(modelURL, metadataURL);
+                console.log("Model loaded successfully");
+                maxPredictions = model.getTotalClasses();
+
+                const flip = true;
+                webcam = new tmImage.Webcam(300, 300, flip);
+                await webcam.setup();
+                await webcam.play();
+                window.requestAnimationFrame(loop);
+
+                document.getElementById("webcam-frame").style.display = "none";
+                document.getElementById("webcam-container").style.display = "flex";
+                document.getElementById("webcam-container").appendChild(webcam.canvas);
+                labelContainer = document.getElementById("label-container");
+                for (let i = 0; i < maxPredictions; i++) {
+                    labelContainer.appendChild(document.createElement("div"));
+                }
+
+                document.getElementById("stop-button").style.display = "block";
+                document.getElementById("Start-button").style.display = "none";
+            } catch (error) {
+                console.error("Error initializing the model or webcam: ", error);
+            }
+        }
+
+        async function loop() {
+            webcam.update();
+            await predict();
+            window.requestAnimationFrame(loop);
+        }
+
+        async function predict() {
+            const prediction = await model.predict(webcam.canvas);
+            for (let i = 0; i < maxPredictions; i++) {
+                const classPrediction =
+                    prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                labelContainer.childNodes[i].innerHTML = classPrediction;
+            }
+        }
+
+        function changeBackground() {
+            const images = [
+                'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            ];
+            const randomImage = images[Math.floor(Math.random() * images.length)];
+            document.body.style.backgroundImage = `url(${randomImage})`;
+        }
+
+        function stopWebcam() {
+            webcam.stop();
+            document.getElementById("webcam-container").innerHTML = '';
+            document.getElementById("webcam-container").style.display = "none";
+            document.getElementById("webcam-frame").style.display = "flex";
+
+            document.getElementById("stop-button").style.display = "none";
+            document.getElementById("Start-button").style.display = "block";
+        }
+    </script>
+</body>
+
+</html>
